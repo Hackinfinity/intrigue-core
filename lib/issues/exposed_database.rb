@@ -1,6 +1,6 @@
 module Intrigue
   module Issue
-  class ExposedDatabse < BaseIssue
+  class ExposedDatabase < BaseIssue
 
     def self.generate(instance_details={})
       {

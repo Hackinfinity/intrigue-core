@@ -27,7 +27,7 @@ class DnsPermute < BaseTask
 
     # Set the basename
     basename = _get_entity_name
-    thread_count = _get_options "threads"
+    thread_count = _get_option "threads"
 
     # gracefully decline to permute these..
     skip_regexes = [ /^.*s3.*\.amazonaws.com$/,  ]
@@ -107,7 +107,7 @@ class DnsPermute < BaseTask
       #basename[place] = "#{current_number.to_i + 1000}"
       increment = {
         :permutation_details => p,
-        :generated_permutation => "#{basename}",
+        :generated_permutation => "#{basename}.#{brute_domain}",
         :depth => 1
       }
       work_q.push(increment)
@@ -121,7 +121,7 @@ class DnsPermute < BaseTask
       #basename[place] = "#{current_number.to_i - 1000}"
       decrement = {
         :permutation_details => p,
-        :generated_permutation => "#{basename}",
+        :generated_permutation => "#{basename}.#{brute_domain}",
         :depth => 1
       }
       work_q.push(decrement)
